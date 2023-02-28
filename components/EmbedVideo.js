@@ -3,12 +3,13 @@ import React from 'react'
 import styles from '../styles/Home.module.css'
 
 const EmbedVideo = ({ id }) => {
+	let url = id ? `https://www.youtube.com/embed/${id}` : null
 	return (
 		<iframe
 			className={styles['embedded-video']}
 			width='560'
 			height='215'
-			src={`https://www.youtube.com/embed/${id}`}
+			src={url}
 			title='YouTube video player'
 			frameBorder='0'
 			allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
