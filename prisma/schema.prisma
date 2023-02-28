@@ -1,0 +1,16 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model youtube_videos {
+  id     String  @id @default(cuid())
+  title  String  @db.VarChar(255)
+  url    String  @db.VarChar(255)
+  rating Int?
+  posted String? @db.VarChar(255)
+}
