@@ -1,5 +1,5 @@
 import React from 'react'
-import PropTypes from 'prop-types'
+// import PropTypes from 'prop-types'
 import styles from '../styles/Home.module.css'
 
 const EmbedVideo = ({ id }) => {
@@ -17,8 +17,8 @@ const EmbedVideo = ({ id }) => {
 	)
 }
 
-EmbedVideo.propTypes = {
-	id: PropTypes.string.isRequired,
-}
+// EmbedVideo.propTypes = {
+// 	id: PropTypes.string.isRequired,
+// }
 
 export default EmbedVideo
