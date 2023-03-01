@@ -3,6 +3,7 @@ import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import prisma from '../lib/prisma'
 import DisplayVideos from '../components/DisplayVideos'
+import { GetStaticProps } from 'next'
 
 export const getStaticProps: GetStaticProps = async () => {
 	const videos = await prisma.youtube_videos.findMany()
