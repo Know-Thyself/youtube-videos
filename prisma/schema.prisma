@@ -8,7 +8,7 @@ datasource db {
 }
 
 model youtube_videos {
-  id     String  @id @default(cuid())
+  id     String    @default(cuid()) @id
   title  String  @db.VarChar(255)
   url    String  @db.VarChar(255)
   rating Int?

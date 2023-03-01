@@ -1,0 +1,8 @@
+.icons-wrapper {
+  text-align: center;
+}
+.icon {
+  font-size: 2rem;
+  color: #333333;
+  cursor: pointer;
+}

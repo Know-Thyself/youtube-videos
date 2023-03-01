@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import EmbedVideo from './EmbedVideo'
-import styles from '../styles/Home.module.css'
+import styles from '../styles/display.module.css'
+import Votes from './votes'
 
-const DisplayVideos = ({ videosData }) => {
-	const [videos, setVideos] = useState(videosData)
+const DisplayVideos = ({ youtubeVideos }) => {
+	const [videos, setVideos] = useState(youtubeVideos)
+	console.log(videos)
 	function youtubeIdParser(url) {
 		// let regExp =
 		// 	/^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#&?]*).*/
@@ -12,26 +14,21 @@ const DisplayVideos = ({ videosData }) => {
 		let regExp =
 			/^.*(youtu\.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/
 		let match = url.match(regExp)
-		// if (match && match[2].length === 11) {
-		// 	return match[2]
-		// } else {
-		// 	//error
-		// }
-    return match && match[2].length === 11 ? match[2] : false
-
+		return match && match[2].length === 11 ? match[2] : false
 	}
 
 	return (
 		<div>
 			{videos.map((video, index) => {
-				const video_id = youtubeIdParser(video.url)
-				return (
-					<div key={index} className={styles['video-and-details-wrapper']}>
-						{/* <Title title={video.title} /> */}
-						<h4>{video.title}</h4>
-						<EmbedVideo id={video_id} />
-						<div className={styles['vote-and-delete']}>
-							{/* <Votes
+					const video_id = youtubeIdParser(video.url)
+					return (
+						<div key={index} className={styles['video-and-details-wrapper']}>
+							{/* <Title title={video.title} /> */}
+							<h4>{video.title}</h4>
+							<EmbedVideo id={video_id} />
+							<div className={styles['vote-and-delete']}>
+								<Votes />
+								{/* <Votes
 								vote={video.rating}
 								video={video}
 								videos={videos}
@@ -44,10 +41,10 @@ const DisplayVideos = ({ videosData }) => {
 								videoRemover={videoRemover}
 								title={video.title}
 							/> */}
+							</div>
 						</div>
-					</div>
-				)
-			})}
+					)
+				})}
 		</div>
 	)
 }

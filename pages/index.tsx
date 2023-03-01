@@ -4,13 +4,12 @@ import styles from '../styles/Home.module.css'
 import prisma from '../lib/prisma'
 import DisplayVideos from '../components/DisplayVideos'
 
-export async function getServerSideProps() {
+export const getStaticProps: GetStaticProps = async () => {
 	const videos = await prisma.youtube_videos.findMany()
 	return { props: { videos } }
 }
 
-export default function Home({ videos } ) {
-  console.log(videos)
+export default function Home({ videos }) {
 	return (
 		<div className={styles.container}>
 			<Head>
@@ -20,21 +19,8 @@ export default function Home({ videos } ) {
 			</Head>
 
 			<main className={styles.main}>
-				<DisplayVideos videosData={videos} />
+				<DisplayVideos youtubeVideos={videos} />
 			</main>
-
-			<footer className={styles.footer}>
-				<a
-					href='https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app'
-					target='_blank'
-					rel='noopener noreferrer'
-				>
-					Powered by{' '}
-					<span className={styles.logo}>
-						<Image src='/vercel.svg' alt='Vercel Logo' width={72} height={16} />
-					</span>
-				</a>
-			</footer>
 		</div>
 	)
 }
