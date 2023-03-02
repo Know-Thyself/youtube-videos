@@ -70,7 +70,6 @@ const DeleteButton = ({ id, videoRemover, title }) => {
 						color='secondary'
 						startIcon={<DeleteIcon />}
 					>
-						{/* <svg data-testid='DeleteIcon'></svg> */}
 						Delete
 					</Button>
 				</DialogActions>

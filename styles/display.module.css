@@ -3,7 +3,72 @@
   background-color: #A39E7C;
   background-color: #D1CEBD;
   background-color: #BEBBA3;
-  padding-top: 11rem;
+  padding: 11rem 0 8rem 0;
+  min-height: 100vh;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.d-none {
+  display: none;
+}
+
+.main-buttons-outer-container {
+  display: block;
+  margin: auto;
+  width: 95%;
+}
+
+.main-buttons {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  margin: 1em 0 0 0;
+}
+
+.asc-desc-order {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.sort-by {
+  display: none;
+  margin: auto;
+  text-align: center;
+  color: #ce2029;
+  font-size: 1.25em;
+}
+
+.modal .modal-content {
+  background-color: darkslateblue;
+  color: rgb(193, 201, 211);
+}
+
+.modal-text {
+  font-size: 1.2em !important;
+  background-color: rgb(193, 201, 211) !important;
+}
+
+.alert {
+  display: block;
+  width: 100%;
+  text-align: center;
+  margin: auto;
+}
+
+.success-alert,
+.error-alert {
+  display: block;
+  width: 40%;
+  margin: auto;
+  text-align: center;
+}
+
+.asc-btn,
+.desc-btn,
+.upload-button {
+  padding: 4px;
 }
 
 .main-wrapper {
@@ -14,6 +79,11 @@
   gap: 1rem;
 }
 
+.only-child {
+  width: 90%;
+  margin: auto;
+}
+
 .video-title {
   margin: 0;
   padding: 0 0.5rem;
@@ -22,12 +92,14 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  font-size: 1.15rem;
+  font-weight: 600;
 }
 
 .video-wrapper {
-    background-color: #b3b3b3;
-    background-color: #DBD7E3;
-    border-radius: 7px;
+  background-color: #b3b3b3;
+  background-color: #DBD7E3;
+  border-radius: 7px;
 }
 
 /* .vote-and-delete {
@@ -51,31 +123,50 @@
   color: #100e26;
 }
 
-.votes {
-  font-size: larger;
-  margin-top: 0.25em;
-}
-
-.like,
-.dislike {
-  display: inline-block;
-  cursor: pointer;
-  margin: 0 0.5em 0 0.5em;
-  font-size: xx-large;
-  font-weight: bolder;
-}
-
 @media (min-width: 570px) {
   .container {
+    padding-top: 8rem;
+  }
 
-      padding-top: 8rem;
-    }
+  .asc-btn,
+  .desc-btn,
+  .upload-button {
+    padding: 4px 16px;
+  }
 }
 
-@media (min-width: 700px) {
+@media (min-width: 748px) {
+  .sort-by {
+    display: block;
+  }
+
   .main-wrapper {
-    width: 90%;
     grid-template-columns: repeat(2, 1fr);
-    gap: 1rem;
+  }
+
+  .only-child {
+    width: 80%;
+  }
+}
+
+@media (min-width: 969px) {
+  .only-child {
+    width: 70%;
+  }
+
+  .video-title {
+    height: 4rem;
+  }
+}
+
+@media (min-width: 1224px) {
+  .main-wrapper {
+    grid-template-columns: repeat(3, 1fr);
+    width: 95%;
+    gap: 2rem;
+  }
+
+  .only-child {
+    width: 60%;
   }
 }

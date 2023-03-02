@@ -4,6 +4,7 @@ import styles from '../styles/Home.module.css'
 import prisma from '../lib/prisma'
 import DisplayVideos from '../components/DisplayVideos'
 import { GetStaticProps } from 'next'
+import Footer from '../components/footer.js'
 
 export const getStaticProps: GetStaticProps = async () => {
 	const videos = await prisma.youtube_videos.findMany()
@@ -64,6 +65,7 @@ export default function Home({ videos }) {
 					updateVideo={updateVideo}
 				/>
 			</main>
+			<Footer />
 		</div>
 	)
 }

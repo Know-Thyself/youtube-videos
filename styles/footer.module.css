@@ -1,28 +1,25 @@
 .footer {
-  height: 48px;
-  background-color: #333333;
-  color: #ffffff;
-  text-align: center;
-}
-
-.footer {
   display: flex;
-  flex: 1;
+  /* flex: 1; */
   padding: 2rem 0;
+  background-color: #61678B;
+  color: #fffff0;
   border-top: 1px solid #eaeaea;
   justify-content: center;
   align-items: center;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  gap: 2rem;
 }
 
 .footer a {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-grow: 1;
+  font-size: 1.115rem;
+  color: aqua;
 }
 
 .logo {
-  height: 1em;
+  height: 1.115rem;
   margin-left: 0.5rem;
-  color: #ffffff;
 }

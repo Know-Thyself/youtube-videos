@@ -1,8 +1,24 @@
 /* .icons-wrapper {
   text-align: center;
 } */
-.icon {
-  font-size: 2rem;
-  color: #333333;
+.votes-container {
+  display: inline-flex;
+  justify-content: center;
+  width: 100%;
+  color: #100e26;
+}
+
+.votes {
+  font-size: larger;
+  margin-top: 0.25em;
+}
+
+.like,
+.dislike {
+  display: inline-block;
   cursor: pointer;
+  margin: 0 0.5em 0 0.5em;
+  font-size: xx-large;
+  font-weight: bolder;
+  color: #252735;
 }

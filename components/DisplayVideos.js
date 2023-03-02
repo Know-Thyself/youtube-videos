@@ -1,9 +1,15 @@
 import React, { useState, useEffect } from 'react'
 import EmbedVideo from './EmbedVideo'
+import PostVideoModal from './post'
 import styles from '../styles/display.module.css'
 import Header from './header'
 import Votes from './votes'
 import DeleteButton from './delete'
+import Alert from 'react-bootstrap/Alert'
+import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward'
+import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward'
+import Button from '@mui/material/Button'
+import Footer from './footer'
 
 const DisplayVideos = ({
 	youtubeVideos,
@@ -13,10 +19,10 @@ const DisplayVideos = ({
 }) => {
 	const [videos, setVideos] = useState(youtubeVideos)
 	const [backupVideos, setBackupVideos] = useState(youtubeVideos)
-	// const [successAlert, setSuccessAlert] = useState(false)
-	// const [errorAlert, setErrorAlert] = useState(false)
-	// const [deleteAlert, setDeleteAlert] = useState(false)
-	// const [open, setOpen] = useState(false)
+	const [successAlert, setSuccessAlert] = useState(false)
+	const [errorAlert, setErrorAlert] = useState(false)
+	const [deleteAlert, setDeleteAlert] = useState(false)
+	const [open, setOpen] = useState(false)
 	const [onlyChild, setOnlyChild] = useState(false)
 
 	function youtubeIdParser(url) {
@@ -88,8 +94,81 @@ const DisplayVideos = ({
 
 	return (
 		<div className={styles['container']}>
-			<Header videos={videos} setVideos={setVideos} />
-			<main className={styles['main-wrapper']}>
+			<div className={styles['App-header']}>
+				<Header
+					videos={backupVideos}
+					setVideos={setVideos}
+					setOnlyChild={setOnlyChild}
+					stateUpdater={stateUpdater}
+				/>
+			</div>
+			<div
+				className={`${successAlert} ? ${styles['success-alert']} : ${styles['d-none']}`}
+			>
+				<Alert
+					show={successAlert}
+					variant='success'
+					dismissible
+					onClose={() => setSuccessAlert(false)}
+				>
+					Success! — Your video is successfully uploaded!
+				</Alert>
+			</div>
+			<div
+				className={`${errorAlert} ? ${styles['error-alert']} : ${styles['d-none']}`}
+			>
+				<Alert
+					show={errorAlert}
+					variant='danger'
+					dismissible
+					onClose={() => setErrorAlert(false)}
+				>
+					Error! — The video already exists! Try uploading another video.
+				</Alert>
+			</div>
+			<div
+				className={`${deleteAlert} ? ${styles['success-alert']} : ${styles['d-none']}`}
+			>
+				<Alert
+					severity='success'
+					className={`${deleteAlert} ? alert-success : ${styles['d-none']}`}
+					onClose={() => setDeleteAlert(false)}
+				>
+					Success! — Your video is successfully deleted!
+				</Alert>
+			</div>
+			<div className={styles['main-buttons-outer-container']}>
+				<div className={styles['main-buttons']}>
+					<div className={styles['asc-desc-order']}>
+						<p className={styles['sort-by']}>Sort By Votes:&nbsp;</p>
+						<Button
+							className={styles['asc-btn']}
+							onClick={ascendingOrder}
+							variant='contained'
+							color='primary'
+						>
+							Asc &nbsp;
+							<ArrowUpwardIcon />
+						</Button>
+						<Button
+							className={styles['desc-btn']}
+							onClick={descendingOrder}
+							variant='contained'
+							color='primary'
+						>
+							Desc &nbsp;
+							<ArrowDownwardIcon />
+						</Button>
+					</div>
+					<PostVideoModal
+						className={styles['upload-button']}
+						addNewVideo={addNewVideo}
+					/>
+				</div>
+			</div>
+			<main
+				className={onlyChild ? styles['only-child'] : styles['main-wrapper']}
+			>
 				{videos.map((video, index) => {
 					const video_id = youtubeIdParser(video.url)
 					return (
@@ -98,16 +177,14 @@ const DisplayVideos = ({
 							<h3 className={styles['video-title']}>{video.title}</h3>
 							<EmbedVideo id={video_id} />
 							<div className={styles['vote-and-delete']}>
-								<Votes />
-								{/* <Votes
-								vote={video.rating}
-								video={video}
-								videos={videos}
-								rating={video.rating}
-								stateUpdater={stateUpdater}
-								updateVideo={updateVideo}
-							/>
-							 */}
+								<Votes
+									vote={video.rating}
+									video={video}
+									videos={videos}
+									rating={video.rating}
+									stateUpdater={stateUpdater}
+									updateVideo={updateVideo}
+								/>
 								<DeleteButton
 									id={video.id}
 									videoRemover={videoRemover}

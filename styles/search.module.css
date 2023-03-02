@@ -42,3 +42,9 @@
 .search-bar::-ms-input-placeholder {
   color: #100e26;
 }
+
+@media (min-width: 1224px) {
+  .search-input-wrapper {
+    width: 50%;
+  }
+}
