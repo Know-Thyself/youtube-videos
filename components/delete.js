@@ -31,7 +31,7 @@ const DeleteButton = ({ id, videoRemover, title }) => {
 					startIcon={<DeleteIcon />}
 					onClick={openDialogBox}
 				>
-					Delete {/* Delete <FontAwesomeIcon icon={faTrash} /> */}
+					Delete
 				</Button>
 			</div>
 			<Dialog

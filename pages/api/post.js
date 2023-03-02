@@ -1,7 +1,7 @@
 import prisma from '../../lib/prisma'
 // import NextCors from 'nextjs-cors'
 
-const create = async (req, res) => {
+const post = async (req, res) => {
 	// const options = {
 	// 	methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
 	// 	origin: '*',
@@ -19,4 +19,4 @@ const create = async (req, res) => {
 	res.json(newVideo)
 }
 
-export default create
+export default post

@@ -18,7 +18,7 @@ export default function Home({ videos }) {
 			headers: { 'Content-Type': 'application/json' },
 			body: JSON.stringify(data),
 		}
-		const response = await fetch('/api/create', requestOptions)
+		const response = await fetch('/api/post', requestOptions)
 		if (!response.ok) {
 			throw new Error('Something went wrong.')
 		}
@@ -26,13 +26,22 @@ export default function Home({ videos }) {
 	}
 
 	const deleteVideo = async (id) => {
-		try {
-			await fetch(`/api/video/${id}`, {
-				method: 'DELETE',
-			})
-		} catch (error) {
-			console.error(error)
+		// try {
+		// 	await fetch(`/api/video/${id}`, {
+		// 		method: 'DELETE',
+		// 	})
+		// } catch (error) {
+		// 	console.error(error)
+		// }
+		const requestOptions = {
+			method: 'DELETE',
+			headers: { 'Content-Type': 'application/json' }
 		}
+		const response = await fetch(`/api/video/${id}`, requestOptions)
+		if (!response.ok) {
+			throw new Error('Something went wrong.')
+		}
+		return await response.json()
 	}
 
 	const updateVideo = async (videoId, updatedVote) => {
