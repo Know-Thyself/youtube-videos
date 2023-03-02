@@ -3,6 +3,7 @@ import EmbedVideo from './EmbedVideo'
 import styles from '../styles/display.module.css'
 import Header from './header'
 import Votes from './votes'
+import DeleteButton from './delete'
 
 const DisplayVideos = ({
 	youtubeVideos,
@@ -94,7 +95,7 @@ const DisplayVideos = ({
 					return (
 						<div key={index} className={styles['video-wrapper']}>
 							{/* <Title title={video.title} /> */}
-							<h4>{video.title}</h4>
+							<h3 className={styles['video-title']}>{video.title}</h3>
 							<EmbedVideo id={video_id} />
 							<div className={styles['vote-and-delete']}>
 								<Votes />
@@ -106,11 +107,12 @@ const DisplayVideos = ({
 								stateUpdater={stateUpdater}
 								updateVideo={updateVideo}
 							/>
-							<DeleteButton
-								id={video.id}
-								videoRemover={videoRemover}
-								title={video.title}
-							/> */}
+							 */}
+								<DeleteButton
+									id={video.id}
+									videoRemover={videoRemover}
+									title={video.title}
+								/>
 							</div>
 						</div>
 					)
