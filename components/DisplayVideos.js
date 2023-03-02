@@ -151,7 +151,7 @@ const DisplayVideos = ({
 							variant='contained'
 							color='primary'
 						>
-							Asc &nbsp;
+							Asc&nbsp;
 							<ArrowUpwardIcon />
 						</Button>
 						<Button
@@ -160,7 +160,7 @@ const DisplayVideos = ({
 							variant='contained'
 							color='primary'
 						>
-							Desc &nbsp;
+							Desc&nbsp;
 							<ArrowDownwardIcon />
 						</Button>
 					</div>

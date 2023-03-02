@@ -63,7 +63,7 @@ const PostVideoModal = ({ addNewVideo }) => {
 				color='primary'
 				onClick={handleShow}
 			>
-				Add Video &nbsp;
+				Add Video&nbsp;
 				<AddToQueueIcon />
 			</Button>
 			<Modal
