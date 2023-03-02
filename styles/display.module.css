@@ -1,12 +1,17 @@
 .container {
-  background-color: #cccccc;
-  background-color: #A39E7C;
-  background-color: #D1CEBD;
   background-color: #BEBBA3;
-  padding: 11rem 0 8rem 0;
+  background-color: #4f4f3f;
+  background-color: #6B6B56;
+  background-color: #87876D;
+  background-color: #9F9F88;
+  background-color: #cfcfc3;
+
+  background-color: #C5C5CA;
+  padding: 8.5rem 0 8rem 0;
   min-height: 100vh;
   margin: 0;
   box-sizing: border-box;
+  text-align: center;
 }
 
 .d-none {
@@ -100,33 +105,30 @@
 .video-wrapper {
   background-color: #b3b3b3;
   background-color: #DBD7E3;
+  background-color: #c5c5b7;
+  background-color: #D8D8DB;
   border-radius: 7px;
 }
 
-/* .vote-and-delete {
-  display: flex;
-  flex-direction: column;
+.vote-and-delete {
+  display: inline-flex;
+  /* flex-direction: column; */
   justify-content: center;
   align-items: center;
-  width: 100%;
-  margin: auto;
-} */
-.vote-and-delete {
+  height: 2.5rem;
+  gap: 1rem;
+  /* width: 100%;
+  margin: auto; */
+}
+/* .vote-and-delete {
   width: 100%;
   margin: auto;
   text-align: center;
-}
-
-.votes-container {
-  display: inline-flex;
-  justify-content: center;
-  width: 100%;
-  color: #100e26;
-}
+} */
 
 @media (min-width: 570px) {
   .container {
-    padding-top: 8rem;
+    padding-top: 7.5rem;
   }
 
   .asc-btn,

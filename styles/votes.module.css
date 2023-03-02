@@ -4,21 +4,28 @@
 .votes-container {
   display: inline-flex;
   justify-content: center;
-  width: 100%;
+  align-items: center;
   color: #100e26;
+  background-color: #BBBBAB;
+  background-color: #D8D8DB;
+
+  background-color: #B2B2B8;
+  background-color: #CACAC5;
+  padding: 4px 16px;
+  border-radius: 4px;
+  height: 2.25rem;
 }
 
 .votes {
-  font-size: larger;
-  margin-top: 0.25em;
+  /* font-size: larger; */
+  margin-top: 0.95rem;
 }
 
 .like,
 .dislike {
   display: inline-block;
   cursor: pointer;
-  margin: 0 0.5em 0 0.5em;
-  font-size: xx-large;
+  font-size: 1.5rem;
   font-weight: bolder;
   color: #252735;
 }

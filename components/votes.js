@@ -19,6 +19,20 @@ const Votes = ({ video, videos, vote, rating, stateUpdater, updateVideo }) => {
 			? Math.sign(num) * (Math.abs(num) / 1000).toFixed(1) + 'K'
 			: Math.sign(num) * Math.abs(num)
 	}
+
+	function numberFormatter(number) {
+		if (number < 1000) {
+			return number
+		} else if (number >= 1000 && number < 1_000_000) {
+			return (number / 1000).toFixed(1).replace(/\.0$/, '') + 'K'
+		} else if (number >= 1_000_000 && number < 1_000_000_000) {
+			return (number / 1_000_000).toFixed(1).replace(/\.0$/, '') + 'M'
+		} else if (number >= 1_000_000_000 && number < 1_000_000_000_000) {
+			return (number / 1_000_000_000).toFixed(1).replace(/\.0$/, '') + 'B'
+		} else if (number >= 1_000_000_000_000 && number < 1_000_000_000_000_000) {
+			return (number / 1_000_000_000_000).toFixed(1).replace(/\.0$/, '') + 'T'
+		}
+	}
 	return (
 		<div className={styles['votes-container']}>
 			<ThumbUpAltIcon
@@ -27,7 +41,9 @@ const Votes = ({ video, videos, vote, rating, stateUpdater, updateVideo }) => {
 				fontSize='large'
 				variant='contained'
 			/>
-			<h3 className={styles.votes}>Votes: {kFormatter(vote)}</h3>
+			<p className={styles.votes}>{numberFormatter(vote)}&nbsp;&nbsp;|</p>
+			&nbsp;&nbsp;
+			<p className={styles.votes}></p>
 			<ThumbDownAltIcon
 				onClick={() => voteUpdater(video, rating - 1)}
 				className={styles.dislike}
