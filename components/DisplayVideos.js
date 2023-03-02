@@ -137,7 +137,11 @@ const DisplayVideos = ({
 					Success! — Your video is successfully deleted!
 				</Alert>
 			</div>
-			<div className={styles['main-buttons-outer-container']}>
+			<div
+				className={
+					onlyChild ? styles['d-none'] : styles['main-buttons-outer-container']
+				}
+			>
 				<div className={styles['main-buttons']}>
 					<div className={styles['asc-desc-order']}>
 						<p className={styles['sort-by']}>Sort By Votes:&nbsp;</p>
@@ -161,7 +165,7 @@ const DisplayVideos = ({
 						</Button>
 					</div>
 					<PostVideoModal
-						className={styles['upload-button']}
+						className={styles['add-btn']}
 						addNewVideo={addNewVideo}
 					/>
 				</div>
