@@ -8,11 +8,20 @@ export default async function handle(req, res) {
 		})
 		res.status(200).json(video)
 	} else if (req.method === 'PATCH') {
-		const updatedVote = req.body.rating
-		const video = await prisma.youtube_videos.update({
-			where: { id: videoId },
-			data: { rating: updatedVote },
-		})
+		let video, updatedVote
+		if (req.body.upvote) {
+			updatedVote = req.body.upvote
+			video = await prisma.youtube_videos.update({
+				where: { id: videoId },
+				data: { upvote: updatedVote },
+			})
+		} else {
+			updatedVote = req.body.downvote
+			video = await prisma.youtube_videos.update({
+				where: { id: videoId },
+				data: { downvote: updatedVote },
+			})
+		}
 		res.status(200).json(video)
 	} else {
 		throw new Error(

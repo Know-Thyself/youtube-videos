@@ -11,6 +11,7 @@ model youtube_videos {
   id     String    @default(cuid()) @id
   title  String  @db.VarChar(255)
   url    String  @db.VarChar(255)
-  rating Int?
+  upvote Int?
   posted String? @db.VarChar(255)
+  downvote Int?
 }

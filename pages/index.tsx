@@ -44,8 +44,24 @@ export default function Home({ videos }) {
 		return await response.json()
 	}
 
-	const updateVideo = async (videoId, updatedVote) => {
-		const data = { rating: updatedVote }
+	const upvoteVideo = async (videoId, updatedVote) => {
+		const data = { upvote: updatedVote }
+		try {
+			await fetch(`/api/video/${videoId}`, {
+				method: 'PATCH',
+				headers: {
+					'Content-Type': 'application/json',
+					'Field-Name': 'Accept-Patch',
+				},
+				body: JSON.stringify(data),
+			})
+		} catch (error) {
+			console.error(error)
+		}
+	}
+
+	const downvoteVideo = async (videoId, updatedVote) => {
+		const data = { downvote: updatedVote }
 		try {
 			await fetch(`/api/video/${videoId}`, {
 				method: 'PATCH',
@@ -71,7 +87,8 @@ export default function Home({ videos }) {
 					youtubeVideos={videos}
 					addVideo={addVideo}
 					deleteVideo={deleteVideo}
-					updateVideo={updateVideo}
+					upvoteVideo={upvoteVideo}
+					downvoteVideo={downvoteVideo}
 				/>
 			</main>
 			<Footer />

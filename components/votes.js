@@ -2,15 +2,33 @@ import ThumbUpAltIcon from '@mui/icons-material/ThumbUpAlt'
 import ThumbDownAltIcon from '@mui/icons-material/ThumbDownAlt'
 import styles from '../styles/votes.module.css'
 
-const Votes = ({ video, videos, vote, rating, stateUpdater, updateVideo }) => {
-	const voteUpdater = (videoObj, totalVote) => {
-		let updatedVideo = { ...videoObj, rating: totalVote }
+const Votes = ({
+	video,
+	videos,
+	upvote,
+	downvote,
+	stateUpdater,
+	upvoteVideo,
+	downvoteVideo,
+}) => {
+	const upvoteUpdater = (videoObj, totalVote) => {
+		let updatedVideo = { ...videoObj, upvote: totalVote }
 		let newData = [...videos]
 		const i = newData.findIndex((video) => video.id === videoObj.id)
 		newData[i] = updatedVideo
 		const videoId = updatedVideo.id
-		const updatedVote = updatedVideo.rating
-		updateVideo(videoId, updatedVote)
+		const updatedVote = updatedVideo.upvote
+		upvoteVideo(videoId, updatedVote)
+		return stateUpdater(newData)
+	}
+	const downvoteUpdater = (videoObj, totalVote) => {
+		let updatedVideo = { ...videoObj, downvote: totalVote }
+		let newData = [...videos]
+		const i = newData.findIndex((video) => video.id === videoObj.id)
+		newData[i] = updatedVideo
+		const videoId = updatedVideo.id
+		const updatedVote = updatedVideo.downvote
+		downvoteVideo(videoId, updatedVote)
 		return stateUpdater(newData)
 	}
 
@@ -36,16 +54,16 @@ const Votes = ({ video, videos, vote, rating, stateUpdater, updateVideo }) => {
 	return (
 		<div className={styles['votes-container']}>
 			<ThumbUpAltIcon
-				onClick={() => voteUpdater(video, rating + 1)}
+				onClick={() => upvoteUpdater(video, upvote + 1)}
 				className={styles.like}
 				fontSize='large'
 				variant='contained'
 			/>
-			<p className={styles.votes}>{numberFormatter(vote)}&nbsp;&nbsp;|</p>
+			<p className={styles.votes}>{numberFormatter(upvote)}&nbsp;&nbsp;|</p>
 			&nbsp;&nbsp;
-			<p className={styles.votes}></p>
+			<p className={styles.votes}>{downvote ? downvote : ''}</p>
 			<ThumbDownAltIcon
-				onClick={() => voteUpdater(video, rating - 1)}
+				onClick={() => downvoteUpdater(video, downvote + 1)}
 				className={styles.dislike}
 				fontSize='large'
 				variant='contained'

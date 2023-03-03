@@ -15,7 +15,8 @@ const DisplayVideos = ({
 	youtubeVideos,
 	addVideo,
 	deleteVideo,
-	updateVideo,
+	upvoteVideo,
+	downvoteVideo
 }) => {
 	const [videos, setVideos] = useState(youtubeVideos)
 	const [backupVideos, setBackupVideos] = useState(youtubeVideos)
@@ -61,8 +62,9 @@ const DisplayVideos = ({
 				id: youtubeIdParser(url).toString(),
 				title: title,
 				url: url,
-				rating: parseInt(likes),
+				upvote: parseInt(likes),
 				posted: new Date().toString(),
+				downvote: 0,
 			}
 			addVideo(newVideo)
 			newArray = [newVideo, ...newArray]
@@ -182,12 +184,13 @@ const DisplayVideos = ({
 							<EmbedVideo id={video_id} />
 							<div className={styles['vote-and-delete']}>
 								<Votes
-									vote={video.rating}
+									upvote={video.upvote}
+									downvote={video.downvote}
 									video={video}
 									videos={videos}
-									rating={video.rating}
 									stateUpdater={stateUpdater}
-									updateVideo={updateVideo}
+									upvoteVideo={upvoteVideo}
+									downvoteVideo={downvoteVideo}
 								/>
 								<DeleteButton
 									id={video.id}
