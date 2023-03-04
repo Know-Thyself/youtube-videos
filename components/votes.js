@@ -2,8 +2,6 @@ import { useState, useEffect } from 'react'
 import ThumbUpAltIcon from '@mui/icons-material/ThumbUpAlt'
 import ThumbDownAltIcon from '@mui/icons-material/ThumbDownAlt'
 import styles from '../styles/votes.module.css'
-import qs from 'qs'
-import { createBrowserHistory } from 'history'
 
 const Votes = ({
 	video,
