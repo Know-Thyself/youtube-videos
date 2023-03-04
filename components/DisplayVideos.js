@@ -39,13 +39,13 @@ const DisplayVideos = ({
 
 	const ascendingOrder = () => {
 		let tempArray = [...backupVideos]
-		let sortedArray = tempArray.sort((a, b) => a.rating - b.rating)
+		let sortedArray = tempArray.sort((a, b) => a.upvote - b.upvote)
 		setVideos(sortedArray)
 	}
 
 	const descendingOrder = () => {
 		let tempArray = [...backupVideos]
-		let sortedArray = tempArray.sort((a, b) => b.rating - a.rating)
+		let sortedArray = tempArray.sort((a, b) => b.upvote - a.upvote)
 		setVideos(sortedArray)
 	}
 
