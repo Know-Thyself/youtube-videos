@@ -12,33 +12,43 @@ const Votes = ({
 	upvoteVideo,
 	downvoteVideo,
 }) => {
-	const [url, setUrl] = useState('')
-	const [isLiked, setIsLiked] = useState({})
-	const [downvoted, setDownvoted] = useState(false)
+	const [id, setId] = useState('')
 
-	//TODO - implement local storage to make liked videos persist
+	let identifier = videos.map((video) => ({ id: video.id, isLiked: false }))
+	// const [isLiked, setIsLiked] = useState([])
+	const [upvoted, setUpvoted] = useState({})
+	const [downvoted, setDownvoted] = useState(false)
+	const [likedVideos, setLikedVideos] = useState(identifier)
+
+	// useEffect(() => {
+	// 	localStorage.setItem('likes_tracker', JSON.stringify(likedVideos))
+	// }, [likedVideos])
+
 	useEffect(() => {
-		const data = window.localStorage.getItem('likes_tracker')
-		if (data !== null) setIsLiked(JSON.parse(data))
+		const data = JSON.parse(localStorage.getItem('likes_tracker') || '[]')
+		setLikedVideos(data)
 	}, [])
 
 	useEffect(() => {
-		window.localStorage.setItem('likes_tracker', JSON.stringify(isLiked))
-	}, [isLiked])
-
-	useEffect(() => {
-		let obj = {}
-		if (url !== '') {
-			obj[url] = true
-			setIsLiked({...isLiked, ...obj})
+		if (id) {
+			let someFix = likedVideos.map((vid) => {
+				if (vid.id === id) {
+					vid.isLiked = true
+				}
+				return vid
+			})
+			console.log(someFix, '<=====someFix')
+			setLikedVideos(someFix)
+			localStorage.setItem('likes_tracker', JSON.stringify(likedVideos))
 		}
-	}, [url])
+	}, [id])
 
 	const upvoteUpdater = (videoObj, totalVote) => {
 		let updatedVideo = { ...videoObj, upvote: totalVote }
 		let newData = [...videos]
 		const i = newData.findIndex((video) => video.id === videoObj.id)
 		newData[i] = updatedVideo
+		console.log(likedVideos, '<========= liked')
 		const videoId = updatedVideo.id
 		const updatedVote = updatedVideo.upvote
 		upvoteVideo(videoId, updatedVote)
@@ -83,10 +93,14 @@ const Votes = ({
 			<ThumbUpAltIcon
 				onClick={(e) => {
 					e.preventDefault()
-					setUrl(video.url)
+					setId(video.id)
 					upvoteUpdater(video, upvote + 1)
 				}}
-				className={isLiked[video.url] ? styles.clicked : styles.like}
+				className={
+					likedVideos.filter((v) => v.id === video.id)[0].isLiked
+						? styles.liked
+						: styles.like
+				}
 				fontSize='large'
 				variant='contained'
 			/>
@@ -95,7 +109,7 @@ const Votes = ({
 			<p className={styles.votes}>{downvote ? downvote : ''}</p>
 			<ThumbDownAltIcon
 				onClick={() => downvoteUpdater(video, downvote + 1)}
-				className={downvoted ? styles.clicked : styles.dislike}
+				className={downvoted ? styles.disliked : styles.dislike}
 				fontSize='large'
 				variant='contained'
 			/>

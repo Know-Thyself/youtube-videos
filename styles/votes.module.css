@@ -21,7 +21,8 @@
   margin-top: 0.95rem;
 }
 
-.clicked {
+.liked, 
+.disliked {
   color: #252735;
   font-size: 1.5rem;
 }

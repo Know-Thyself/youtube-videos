@@ -16,7 +16,8 @@
 
 .footer a {
   font-size: 1.115rem;
-  color: aqua;
+  color: rgb(178, 250, 250);
+  font-weight: 600;
 }
 
 .logo {
