@@ -13,10 +13,11 @@ const Votes = ({
 	downvoteVideo,
 }) => {
 	const [id, setId] = useState('')
-	let likesIdentifier = videos.map((video) => ({
-		id: video.id,
+	const likesIdentifier = videos.map((vid) => ({
+		id: vid.id,
 		isLiked: false,
 	}))
+
 	const [downvoted, setDownvoted] = useState(false)
 	const [likesTracker, setLikesTracker] = useState(likesIdentifier)
 
@@ -27,14 +28,13 @@ const Votes = ({
 
 	useEffect(() => {
 		if (id) {
-			let someFix = likesTracker.map((vid) => {
+			let tempArray = likesIdentifier.map((vid) => {
 				if (vid.id === id) {
 					vid.isLiked = true
 				}
 				return vid
 			})
-			console.log(someFix, '<=====someFix')
-			setLikesTracker(someFix)
+			setLikesTracker(tempArray)
 			localStorage.setItem('likes_tracker', JSON.stringify(likesTracker))
 		}
 	}, [id])
@@ -47,6 +47,7 @@ const Votes = ({
 		const videoId = updatedVideo.id
 		const updatedVote = updatedVideo.upvote
 		upvoteVideo(videoId, updatedVote)
+		console.log(newData[i].id === video.id)
 		return stateUpdater(newData)
 	}
 
@@ -85,7 +86,7 @@ const Votes = ({
 					upvoteUpdater(video, upvote + 1)
 				}}
 				className={
-					likesTracker.filter((v) => v.id === video.id)[0].isLiked
+					likesTracker.filter((v) => v.id === video.id && v.isLiked === true).length
 						? styles.liked
 						: styles.like
 				}
