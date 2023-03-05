@@ -13,33 +13,29 @@ const Votes = ({
 	downvoteVideo,
 }) => {
 	const [id, setId] = useState('')
-
-	let identifier = videos.map((video) => ({ id: video.id, isLiked: false }))
-	// const [isLiked, setIsLiked] = useState([])
-	const [upvoted, setUpvoted] = useState({})
+	let likesIdentifier = videos.map((video) => ({
+		id: video.id,
+		isLiked: false,
+	}))
 	const [downvoted, setDownvoted] = useState(false)
-	const [likedVideos, setLikedVideos] = useState(identifier)
-
-	// useEffect(() => {
-	// 	localStorage.setItem('likes_tracker', JSON.stringify(likedVideos))
-	// }, [likedVideos])
+	const [likesTracker, setLikesTracker] = useState(likesIdentifier)
 
 	useEffect(() => {
 		const data = JSON.parse(localStorage.getItem('likes_tracker') || '[]')
-		setLikedVideos(data)
+		setLikesTracker(data)
 	}, [])
 
 	useEffect(() => {
 		if (id) {
-			let someFix = likedVideos.map((vid) => {
+			let someFix = likesTracker.map((vid) => {
 				if (vid.id === id) {
 					vid.isLiked = true
 				}
 				return vid
 			})
 			console.log(someFix, '<=====someFix')
-			setLikedVideos(someFix)
-			localStorage.setItem('likes_tracker', JSON.stringify(likedVideos))
+			setLikesTracker(someFix)
+			localStorage.setItem('likes_tracker', JSON.stringify(likesTracker))
 		}
 	}, [id])
 
@@ -48,7 +44,6 @@ const Votes = ({
 		let newData = [...videos]
 		const i = newData.findIndex((video) => video.id === videoObj.id)
 		newData[i] = updatedVideo
-		console.log(likedVideos, '<========= liked')
 		const videoId = updatedVideo.id
 		const updatedVote = updatedVideo.upvote
 		upvoteVideo(videoId, updatedVote)
@@ -81,13 +76,6 @@ const Votes = ({
 		}
 	}
 
-	function youtubeIdParser(url) {
-		let regExp =
-			/^.*(youtu\.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/
-		let match = url.match(regExp)
-		return match && match[2].length === 11 ? match[2] : false
-	}
-
 	return (
 		<div className={styles['votes-container']}>
 			<ThumbUpAltIcon
@@ -97,7 +85,7 @@ const Votes = ({
 					upvoteUpdater(video, upvote + 1)
 				}}
 				className={
-					likedVideos.filter((v) => v.id === video.id)[0].isLiked
+					likesTracker.filter((v) => v.id === video.id)[0].isLiked
 						? styles.liked
 						: styles.like
 				}
