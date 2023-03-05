@@ -16,7 +16,7 @@ const DisplayVideos = ({
 	addVideo,
 	deleteVideo,
 	upvoteVideo,
-	downvoteVideo
+	downvoteVideo,
 }) => {
 	const [videos, setVideos] = useState(youtubeVideos)
 	const [backupVideos, setBackupVideos] = useState(youtubeVideos)
@@ -24,7 +24,7 @@ const DisplayVideos = ({
 	const [errorAlert, setErrorAlert] = useState(false)
 	const [deleteAlert, setDeleteAlert] = useState(false)
 	const [open, setOpen] = useState(false)
-	const [onlyChild, setOnlyChild] = useState(false)
+	const [isOnlyChild, setIsOnlyChild] = useState(false)
 
 	function youtubeIdParser(url) {
 		// let regExp =
@@ -100,7 +100,7 @@ const DisplayVideos = ({
 				<Header
 					videos={backupVideos}
 					setVideos={setVideos}
-					setOnlyChild={setOnlyChild}
+					setIsOnlyChild={setIsOnlyChild}
 					stateUpdater={stateUpdater}
 				/>
 			</div>
@@ -141,7 +141,9 @@ const DisplayVideos = ({
 			</div>
 			<div
 				className={
-					onlyChild ? styles['d-none'] : styles['main-buttons-outer-container']
+					isOnlyChild
+						? styles['d-none']
+						: styles['main-buttons-outer-container']
 				}
 			>
 				<div className={styles['main-buttons']}>
@@ -173,7 +175,7 @@ const DisplayVideos = ({
 				</div>
 			</div>
 			<main
-				className={onlyChild ? styles['only-child'] : styles['main-wrapper']}
+				className={isOnlyChild ? styles['only-child'] : styles['main-wrapper']}
 			>
 				{videos.map((video, index) => {
 					const video_id = youtubeIdParser(video.url)

@@ -1,7 +1,7 @@
 import styles from '../styles/header.module.css'
 import SearchBar from './search'
 
-const Header = ({ videos, setVideos, setOnlyChild, stateUpdater }) => {
+const Header = ({ videos, setVideos, setIsOnlyChild, stateUpdater }) => {
 	return (
 		<header className={styles.header}>
 			<h1 className={styles.title}>YouTube Videos Recommendation</h1>
@@ -9,7 +9,7 @@ const Header = ({ videos, setVideos, setOnlyChild, stateUpdater }) => {
 				className={styles.search}
 				videos={videos}
 				setVideos={setVideos}
-				setOnlyChild={setOnlyChild}
+				setIsOnlyChild={setIsOnlyChild}
 				stateUpdater={stateUpdater}
 			/>
 		</header>

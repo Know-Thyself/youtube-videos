@@ -35,7 +35,7 @@ export default function Home({ videos }) {
 		// }
 		const requestOptions = {
 			method: 'DELETE',
-			headers: { 'Content-Type': 'application/json' }
+			headers: { 'Content-Type': 'application/json' },
 		}
 		const response = await fetch(`/api/video/${id}`, requestOptions)
 		if (!response.ok) {

@@ -5,7 +5,7 @@ import Head from 'next/head'
 import DisplayVideos from '../components/DisplayVideos'
 
 function MyApp({ Component, pageProps }) {
-  return (
+	return (
 		<>
 			<Head>
 				<title>YouTube Videos</title>

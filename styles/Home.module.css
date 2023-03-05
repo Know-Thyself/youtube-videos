@@ -1,5 +1,5 @@
 .container {
-  position: relative;
+	position: relative;
 }
 
 /* .main {
@@ -14,8 +14,8 @@
 
 
 @media (max-width: 600px) {
-  .grid {
-    width: 100%;
-    flex-direction: column;
-  }
+	.grid {
+		width: 100%;
+		flex-direction: column;
+	}
 }

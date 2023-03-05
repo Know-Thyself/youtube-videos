@@ -2,36 +2,33 @@
   text-align: center;
 } */
 .votes-container {
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  color: #100e26;
-  background-color: #BBBBAB;
-  background-color: #D8D8DB;
-
-  background-color: #B2B2B8;
-  background-color: #CACAC5;
-  padding: 4px 16px;
-  border-radius: 4px;
-  height: 2.25rem;
+	display: inline-flex;
+	justify-content: center;
+	align-items: center;
+	color: #100e26;
+	background-color: #B2B2B8;
+	background-color: #CACAC5;
+	padding: 4px 16px;
+	border-radius: 4px;
+	height: 2.25rem;
 }
 
 .votes {
-  /* font-size: larger; */
-  margin-top: 0.95rem;
+	/* font-size: larger; */
+	margin-top: 0.95rem;
 }
 
-.liked, 
+.liked,
 .disliked {
-  color: #252735;
-  font-size: 1.5rem;
+	color: #252735;
+	font-size: 1.5rem;
 }
 
 .like,
 .dislike {
-  display: inline-block;
-  cursor: pointer;
-  font-size: 1.5rem;
-  font-weight: bolder;
-  color: #8D8D89;
+	display: inline-block;
+	cursor: pointer;
+	font-size: 1.5rem;
+	font-weight: bolder;
+	color: #8D8D89;
 }

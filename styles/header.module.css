@@ -4,32 +4,33 @@
   text-align: center;
 } */
 .header {
-  /* margin: 0; */
-  padding: 0.5rem 0 1rem 0;
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  place-content: center;
-  /* justify-content: center;
+	/* margin: 0; */
+	padding: 0.5rem 0 1rem 0;
+	box-sizing: border-box;
+	display: flex;
+	flex-direction: column;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	place-content: center;
+	/* justify-content: center;
   align-items: center; */
-  background-color: #333333;
-  background-color: #7C81A3;
-  background-color: #61678B;
-  background-color: #40404F;
-  color: #fffff0;
-  /* height: 64px; */
-  z-index: 2;
-  text-align: center;
-  gap: 0.5rem;
+	background-color: #333333;
+	background-color: #7C81A3;
+	background-color: #61678B;
+	background-color: #40404F;
+	color: #fffff0;
+	/* height: 64px; */
+	z-index: 2;
+	text-align: center;
+	gap: 0.5rem;
 }
+
 .title {
-  width: 90%;
-  margin: 0 auto;
-  padding: 0;
+	width: 90%;
+	margin: 0 auto;
+	padding: 0;
 }
 
 /* .search {

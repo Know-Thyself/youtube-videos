@@ -5,26 +5,26 @@
 } */
 
 .delete-button-container {
-  width: 100%;
-  margin-top: -0.5em;
-  margin: auto;
+	width: 100%;
+	margin-top: -0.5em;
+	margin: auto;
 }
 
 .delete-dialog {
-  background-color: darkred;
-  color: rgb(193, 201, 211);
+	background-color: darkred;
+	color: rgb(193, 201, 211);
 }
 
 .delete-button {
-  background-color: darkred !important;
-  /* margin: auto;
+	background-color: darkred !important;
+	/* margin: auto;
   text-align: center; */
 }
 
 #alert-dialog-description {
-  color: #000 !important;
+	color: #000 !important;
 }
 
 .dialog-content {
-  background-color: rgb(193, 201, 211);
+	background-color: rgb(193, 201, 211);
 }
