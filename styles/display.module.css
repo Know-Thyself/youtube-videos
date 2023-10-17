@@ -1,5 +1,8 @@
 .container {
-	background-color: #C5C5CA;
+    background-color: #c5c6c7;
+	background-color: #aaabbb;
+	background-color: #a8adb1;
+	background-color: #b1aca8;
 	padding: 8.5rem 0 8rem 0;
 	min-height: 100vh;
 	margin: 0;
@@ -98,9 +101,10 @@
 
 .video-wrapper {
 	background-color: #b3b3b3;
-	background-color: #DBD7E3;
 	background-color: #c5c5b7;
 	background-color: #D8D8DB;
+	background-color: #bec1c4;
+    background-color: #c8c5c2;
 	border-radius: 7px;
 }
 
